@@ -33,7 +33,7 @@ export function fileToDataUrl(file) {
 /*A bunch of functions to create dom elements to make my 
 main code look nicer (and so I dont have to write the same code over
 and over again to achieve the same thing)*/
-export function createDiv(parent, id, cl) {
+export function Div(parent, id, cl) {
     let elem = document.createElement("div")
     if (id) {elem.id=id}
     if (cl) {elem.className=cl}
@@ -41,7 +41,7 @@ export function createDiv(parent, id, cl) {
     return elem
 }
 
-export function createForm (parent, id, cl) {
+export function Form (parent, id, cl) {
     let elem = document.createElement("form")
     if (id) {elem.id=id}
     if (cl) {elem.className=cl}
@@ -49,7 +49,7 @@ export function createForm (parent, id, cl) {
     return elem
 }
 
-export function createInput(parent, type, id, cl, value, placeholder) {
+export function Input(parent, type, id, cl, value, placeholder) {
     let elem = document.createElement("input")
     elem.type=type
     if (id) {elem.id=id}
@@ -60,22 +60,28 @@ export function createInput(parent, type, id, cl, value, placeholder) {
     return elem
 }
 
-export function createButton(parent, type, id, cl, value, name) {
+export function Button(parent, type, id, cl, value, name) {
     let elem = document.createElement("button")
     elem.type=type
     if (id) {elem.id=id}
     if (cl) {elem.className=cl}
-    if (value) {elem.value=value}
+    if (value) {elem.value=value; elem.textContent=value}
     if (name) {elem.name=name}
     parent.append(elem)
     return elem
 }
 
-export function createLabel(parent, id, cl, text) {
+export function Label(parent, id, cl, text) {
     let elem = document.createElement("label")
     if (id) {elem.id=id}
     if (cl) {elem.className=cl}
     if (text) {elem.textContent=text}
+    parent.append(elem)
+    return elem
+}
+
+export function Br(parent) {
+    let elem = document.createElement("br")
     parent.append(elem)
     return elem
 }
