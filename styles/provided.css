@@ -45,4 +45,24 @@ footer {
     list-style-type: none;
 }
 
+div.login-form {
+    display:flex;
+    width: 70%;
+    margin: 0 auto;
+}
+
+label.login-form {
+    width: 40%;
+}
+
+input.login-form {
+    width: 55%;
+}
+
+.signup {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
 /* Add your styles here */
