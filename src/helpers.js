@@ -85,3 +85,58 @@ export function Br(parent) {
     parent.append(elem)
     return elem
 }
+
+export function P (parent, id, cl, text) {
+    let elem = document.createElement("p")
+    if (id) {elem.id=id}
+    if (cl) {elem.className=cl}
+    if (text) {elem.textContent=text}
+    parent.append(elem)
+    return elem
+}
+
+export function H1 (parent, id, cl, text) {
+    let elem = document.createElement("h1")
+    if (id) {elem.id=id}
+    if (cl) {elem.className=cl}
+    if (text) {elem.textContent=text}
+    parent.append(elem)
+    return elem
+}
+
+export function H2 (parent, id, cl, text) {
+    let elem = document.createElement("h2")
+    if (id) {elem.id=id}
+    if (cl) {elem.className=cl}
+    if (text) {elem.textContent=text}
+    parent.append(elem)
+    return elem
+}
+
+export function H3 (parent, id, cl, text) {
+    let elem = document.createElement("h3")
+    if (id) {elem.id=id}
+    if (cl) {elem.className=cl}
+    if (text) {elem.textContent=text}
+    parent.append(elem)
+    return elem
+}
+
+export function H4 (parent, id, cl, text) {
+    let elem = document.createElement("h4")
+    if (id) {elem.id=id}
+    if (cl) {elem.className=cl}
+    if (text) {elem.textContent=text}
+    parent.append(elem)
+    return elem
+}
+
+export function Img (parent, id, cl, src) {
+    let elem = document.createElement("img")
+    if (id) {elem.id=id}
+    if (cl) {elem.className=cl}
+    if (src) {elem.src=`data:image/png;base64,${src}`}
+    parent.append(elem)
+    return elem
+
+}

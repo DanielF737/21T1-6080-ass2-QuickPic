@@ -43,6 +43,7 @@ footer {
     padding: 5px;
     display: inline;
     list-style-type: none;
+    cursor: pointer;
 }
 
 div.login-form {
@@ -61,8 +62,27 @@ input.login-form {
 
 .signup {
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     margin: 0;
+}
+
+div.feed {
+    display:flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width:70%;
+}
+
+div.post {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+img.feed-item {
+    width: 50%;
+    height:auto;
 }
 /* Add your styles here */
