@@ -28,7 +28,6 @@ export function createFeed(main) {
     fetch(`${api}/user/feed`, options)
         .then(r => r.json())
         .then(r => {
-            console.log(r)
             for (let i = 0; i < r.posts.length; i++) {
                 createPost(document.getElementsByClassName("feed")[0], r.posts[i])
             }

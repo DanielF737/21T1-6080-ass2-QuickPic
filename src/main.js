@@ -9,8 +9,6 @@ import * as feed from './feed.js'
 const api = new API('http://localhost:5000');
 
 // Example usage of makeAPIRequest method.
-api.makeAPIRequest('dummy/user')
-    .then(r => console.log(r));
 
 const body = document.getElementsByTagName("body")[0]
 const main = document.getElementsByTagName("main")[0]
