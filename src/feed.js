@@ -37,14 +37,28 @@ export function createFeed(main) {
 }
 
 function createPost(feed, post) {
-    let d = new Date();
-    d.setTime(post.meta.published)
-    let time = `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`
+    let d = new Date(post.meta.published*1000); //Convert unix timestamp to milliseconds
     let wrapper = create.Div(feed, false, "post")
-    create.P(wrapper, false, "feed-item", post.meta.author)
-    // create.P(wrapper, false, "feed-item",)
+    create.H2(wrapper, false, "feed-item", post.meta.author)
     create.Img(wrapper, false, "feed-item", post.src)
-    create.P(wrapper, false, "feed-item", `${post.meta.likes.length} Likes - ${post.comments.length} comments`)
-    create.P(wrapper, false, "feed-item", post.meta.description_text)
-    create.P(wrapper, false, "feed-item", time)
+    let likes = create.P(wrapper, false, "feed-item view-comment", `${post.meta.likes.length} Likes`)
+    likes.addEventListener('click', function(){viewLikes(post)})
+    create.P(wrapper, false, "feed-item", `<strong>${post.meta.author}</strong> ${post.meta.description_text}`)
+    let comments = create.P(wrapper, false, "feed-item view-comment", `View all ${post.comments.length} comment(s)`)
+    comments.addEventListener('click', function(){viewComments(post)})
+    create.P(wrapper, false, "feed-item", d.toLocaleString())
+}
+
+function viewLikes(post) {
+    let modal = document.getElementById("modal")
+    modal.style.display="block"
+    let content = document.getElementsByClassName("modal-content")[0]
+    create.P(content, false, false, `Likes for post ID: ${post.id}`)
+}
+
+function viewComments(post) {
+    let modal = document.getElementById("modal")
+    modal.style.display="block"
+    let content = document.getElementsByClassName("modal-content")[0]
+    create.P(content, false, false, `Comments for post ID: ${post.id}`)    
 }

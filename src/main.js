@@ -12,7 +12,10 @@ const api = new API('http://localhost:5000');
 api.makeAPIRequest('dummy/user')
     .then(r => console.log(r));
 
+const body = document.getElementsByTagName("body")[0]
 const main = document.getElementsByTagName("main")[0]
+let modal = create.Modal(body)
+
 if (localStorage.hasOwnProperty('token')) {
     feed.createFeed(main)
 } else {

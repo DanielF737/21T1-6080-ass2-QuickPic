@@ -33,6 +33,7 @@ export function fileToDataUrl(file) {
 /*A bunch of functions to create dom elements to make my 
 main code look nicer (and so I dont have to write the same code over
 and over again to achieve the same thing)*/
+
 export function Div(parent, id, cl) {
     let elem = document.createElement("div")
     if (id) {elem.id=id}
@@ -90,7 +91,7 @@ export function P (parent, id, cl, text) {
     let elem = document.createElement("p")
     if (id) {elem.id=id}
     if (cl) {elem.className=cl}
-    if (text) {elem.textContent=text}
+    if (text) {elem.innerHTML=text} //Inner html vs text content to make using tags such as strong easier
     parent.append(elem)
     return elem
 }
@@ -139,4 +140,34 @@ export function Img (parent, id, cl, src) {
     parent.append(elem)
     return elem
 
+}
+
+
+
+export function Modal (main) {
+    let modal = Div(main, "modal", "modal")
+    main.appendChild(modal)
+
+    let content = Div(modal, false, "modal-content")
+
+    let close = document.createElement("span")
+    close.className="close"
+    close.innerHTML="&times;"
+    content.appendChild(close)
+
+    close.addEventListener('click', function(){
+        modal.style.display = "none";
+        content.innerHTML=""
+        content.appendChild(close)
+
+    })
+    window.onclick = function(e) {
+        if (e.target==modal) {
+            modal.style.display="none"
+            content.innerHTML=""
+            content.appendChild(close)
+        }
+    }
+
+    return modal
 }

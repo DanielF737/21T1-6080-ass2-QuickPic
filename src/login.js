@@ -3,7 +3,7 @@ import * as feed from './feed.js'
 const api = `http://localhost:5000`
 
 export function createLoginForm(main) {
-    main.innerHTML=""
+    main.innerHTML="" //Reset the page body
     let div = create.Div(main, false, "login-form")
     let loginForm = create.Form(div, false, "signup")
     create.Label(loginForm, false, "login-form", "Username:")
