@@ -46,25 +46,44 @@ footer {
     cursor: pointer;
 }
 
+h1.title {
+    cursor: pointer;
+}
+
 div.login-form {
-    display:flex;
-    width: 70%;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+form.signup {
+    display: flex;
+    flex-flow: column wrap;
     margin: 0 auto;
+    width:100%;
+    max-width: 330px;
+}
+
+div.error {
+    display:none;
+    margin: 0 auto;
+    width:100%;
+    max-width: 330px;
+    background-color: lightcoral;
+    border:red solid 1px;
+    border-radius: 5px;
+}
+
+p.error-text {
+    margin-left: 2%;
 }
 
 label.login-form {
-    width: 40%;
+    width: auto;
 }
 
 input.login-form {
-    width: 55%;
-}
-
-.signup {
-    display:flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 0 auto;
+    width: auto;
 }
 
 div.feed {
@@ -79,12 +98,10 @@ div.feed {
 div.post {
     display:flex;
     flex-direction: column;
-    align-items: left;
     width: 90%;
     min-width: 400px;
     max-width: 800px;
     background-color: #FFFFFF;
-    /* padding: 2%; */
     margin: 1%;
     border-radius: 2px;
     border: #DDDDDD solid 1px;
@@ -111,6 +128,28 @@ img.feed-item {
 .view-comment:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+div.like-wrapper {
+    display:flex;
+    align-content: flex-start;
+    align-items: center;
+    width: 10%;
+    padding: 0 2%;
+}
+
+.add-like {
+    cursor: pointer;
+    font-size: 30px;
+    margin: 0;
+}
+
+.liked {
+    color:red;
+}
+
+.unliked {
+    color:coral;
 }
 
 /*Modal Styles*/
