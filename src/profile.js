@@ -1,6 +1,5 @@
 import * as create from './helpers.js'
-import * as login from './login.js'
-import * as feed from './feed.js'
+import * as post from './post.js'
 const api = `http://localhost:5000`
 
 //TODO - meaningful comments and javadocs
@@ -120,7 +119,7 @@ export function createProfile(main, id, username) {
         fetch(`${api}/post/?id=${posts[i]}`, options)
         .then(r => r.json())
         .then(r => {
-          feed.createPost(document.getElementsByClassName("feed")[0], r)
+          post.createPost(document.getElementsByClassName("feed")[0], r)
         })
       }
   });

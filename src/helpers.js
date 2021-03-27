@@ -1,3 +1,6 @@
+import * as profile from './profile.js'
+import * as feed from './feed.js'
+
 /**
  * Given a js file object representing a jpg or png image, such as one taken
  * from a html file input element, return a promise which resolves to the file
@@ -174,4 +177,36 @@ export function Modal (main) {
     }
 
     return modal
+}
+
+//helper function to build the navbar elements for a signed in user
+export function navbar() {
+    const navbar = document.getElementsByClassName("nav")[0]
+    while (navbar.firstChild) {
+        navbar.removeChild(navbar.lastChild);
+    }
+    
+    let search = document.createElement("img")
+    search.setAttribute("src", "../images/fi-rr-search.svg")
+    search.className="nav-item clickable"
+    search.addEventListener("click", function(){feed.followUser()})
+    navbar.appendChild(search)
+
+    let make = document.createElement("img")
+    make.setAttribute("src", "../images/fi-rr-edit.svg")
+    make.className="nav-item clickable"
+    make.addEventListener("click", function(){post.makePostForm()})
+    navbar.appendChild(make)
+
+    let prof = document.createElement("img")
+    prof.setAttribute("src", "../images/fi-rr-user.svg")
+    prof.className="nav-item clickable"
+    prof.addEventListener("click", function(){profile.createProfile(main)})
+    navbar.appendChild(prof)
+    
+    let signout = document.createElement("img")
+    signout.setAttribute("src", "../images/fi-rr-sign-out.svg")
+    signout.className="nav-item clickable"
+    signout.addEventListener("click", function(){login.logout(main)})
+    navbar.appendChild(signout)
 }

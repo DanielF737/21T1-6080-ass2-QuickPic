@@ -124,3 +124,12 @@ div.cell {
   cursor: pointer;
   text-decoration: underline;
 }
+
+textarea.add-comment {
+  width: 95%;
+  border: none;
+  padding-left: 2%;
+  margin-top: 1%;
+  resize: none;
+  overflow:auto;
+}
