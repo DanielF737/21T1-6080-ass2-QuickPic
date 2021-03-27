@@ -4,6 +4,9 @@ import * as profile from './profile.js'
 import * as post from './post.js'
 const api = `http://localhost:5000`
 
+//TODO - meaningful comments and javadocs
+//TODO - Infinite scroll, when approaching the bottom of the page load the next 5 or so of feed (base index off number of "post" elements)
+    //if run out of posts display warnings and stop attempting
 export function createFeed(main) {
     if (!localStorage.hasOwnProperty('token')) {
         login.createLoginForm(main)
@@ -12,6 +15,7 @@ export function createFeed(main) {
         main.removeChild(main.lastChild);
     }
 
+    //TODO - Move this into its own function, credit images in comment
     const navbar = document.getElementsByClassName("nav")[0]
     while (navbar.firstChild) {
         navbar.removeChild(navbar.lastChild);
@@ -34,7 +38,6 @@ export function createFeed(main) {
     prof.className="nav-item clickable"
     prof.addEventListener("click", function(){profile.createProfile(main)})
     navbar.appendChild(prof)
-    
     
     let signout = document.createElement("img")
     signout.setAttribute("src", "../images/fi-rr-sign-out.svg")
@@ -62,6 +65,7 @@ export function createFeed(main) {
 
 }
 
+//TODO - Add commenting functionality, add text area to bottom of post, even listener on enter, append comments immediately
 export function createPost(feed, post) {
     const ownPost = localStorage.getItem("uname") == post.meta.author
     let d = new Date(post.meta.published*1000); //Convert unix timestamp to milliseconds
@@ -99,7 +103,7 @@ export function createPost(feed, post) {
 
     create.P(wrapper, false, "feed-item", d.toLocaleString())
 
-    
+    //TODO - credit images in comment
     if (ownPost) {
         let inner = create.Div(authorWrapper, false, "inner-wrapper")
         let edit = document.createElement("img")

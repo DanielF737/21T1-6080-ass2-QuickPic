@@ -3,6 +3,7 @@ import * as login from './login.js'
 import * as feed from './feed.js'
 const api = `http://localhost:5000`
 
+//TODO - meaningful comments and javadocs
 function isFollowing(id) {
   let options = {
       method: "GET",
@@ -85,24 +86,21 @@ export function createProfile(main, id, username) {
       
       strong = document.createElement("strong")
       strong.textContent=`${r.name}`
-      create.P(row2, false, false, "Name: ").appendChild(strong)
+      create.P(row2, false, "feed-item", "Name: ").appendChild(strong)
       
       strong = document.createElement("strong")
       strong.textContent=`${r.email}`
-      create.P(row2, false, false, "Email: ").appendChild(strong)
-
-      
-      let row3 = create.Div(profile, false, "profile-wrapper flex-end")
+      create.P(row2, false, "feed-item", "Email: ").appendChild(strong)
 
       if (ownProf) {
-        let edit = create.Button(row3, "button", false, false, "Edit Profile", "edit")
+        let edit = create.Button(row2, "button", false, false, "Edit Profile", "edit")
         edit.addEventListener("click", editProfile(r, row2, edit))
       } else {
         let follow
         if (isFollowing(r.id)) {
-          follow = create.Button(row3, "button", false, false, "Follow", "follow")
+          follow = create.Button(row2, "button", false, false, "Follow", "follow")
         } else {
-          follow = create.Button(row3, "button", false, false, "Unfollow", "follow")
+          follow = create.Button(row2, "button", false, false, "Unfollow", "follow")
         }
         follow.addEventListener("click", function(){followUser(r, follow, followers)})
       }
@@ -158,6 +156,7 @@ function showFollowing(user) {
     }
 }
 
+//TODO - implement this - change P to text inputs, change button to submit, make API call
 function editProfile(user, row, button) {
   if (button.textContent="done") {
     button.textContent="Edit Profile"

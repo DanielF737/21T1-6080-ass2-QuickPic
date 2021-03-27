@@ -2,6 +2,8 @@ import * as create from './helpers.js'
 import * as feed from './feed.js'
 const api = `http://localhost:5000`
 
+//TODO - meaningful comments and javadocs
+//TODO - Make this not butt ugly (suck it up and do some flexbox)
 export function createLoginForm(main) {
     while (main.firstChild) {
         main.removeChild(main.lastChild);

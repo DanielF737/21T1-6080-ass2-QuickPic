@@ -143,7 +143,7 @@ export function Img (parent, id, cl, src) {
 }
 
 
-
+//Helper function to initiate modal to be used across the rest off the app
 export function Modal (main) {
     let modal = Div(main, "modal", "modal")
     main.appendChild(modal)

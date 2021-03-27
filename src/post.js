@@ -1,13 +1,14 @@
 import * as create from './helpers.js'
 const api = `http://localhost:5000`
 
+//TODO - meaningful comments and javadocs
 export function makePostForm() {
   let modal = document.getElementById("modal")
   modal.style.display="block"
   let content = document.getElementsByClassName("modal-content")[0]
 
   create.H2(content, false, false, "Make a post:")
-  let image = create.Input(content, "file", false, false, false, false).setAttribute("accept", "image/png")
+  create.Input(content, "file", false, false, false, false).setAttribute("accept", "image/png")
   create.P(content, false, false, "Enter a description for your image:")
   let desc = document.createElement("textarea")
   desc.setAttribute("placeholder", "An interesting description...")
@@ -20,9 +21,9 @@ export function makePostForm() {
   submit.addEventListener("click", function(e){e.preventDefault();makePost(document.querySelector('input[type="file"]').files[0], desc.value)})
 
   content.style.width = "30%";
-
 }
 
+//TODO - Throw an error when no desc or image (400 - malformed request)
 function makePost(image, desc) {
   create.fileToDataUrl(image)
   .then(r => {

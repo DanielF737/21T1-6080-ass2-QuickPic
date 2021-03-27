@@ -1,0 +1,35 @@
+div.login-form {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+}
+
+form.signup {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 0 auto;
+  width:100%;
+  max-width: 330px;
+}
+
+div.error {
+  display:none;
+  margin: 0 auto;
+  width:100%;
+  max-width: 330px;
+  background-color: lightcoral;
+  border:red solid 1px;
+  border-radius: 5px;
+}
+
+p.error-text {
+  margin-left: 2%;
+}
+
+label.login-form {
+  width: auto;
+}
+
+input.login-form {
+  width: auto;
+}

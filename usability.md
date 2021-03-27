@@ -1,1 +1,4 @@
-TODO!
+ - Application doesnt resist being zoomed (all the way to 500%)
+ - High contrast color scheme
+ - Alt text on all images (excluding images from the backend aka posts)
+ - Consistent and predicatable design and flow ensuring navigation is easy
