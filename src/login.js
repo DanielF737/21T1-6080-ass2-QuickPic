@@ -3,7 +3,9 @@ import * as feed from './feed.js'
 const api = `http://localhost:5000`
 
 export function createLoginForm(main) {
-    main.innerHTML="" //Reset the page body
+    while (main.firstChild) {
+        main.removeChild(main.lastChild);
+    }
 
     let div = create.Div(main, false, "login-form")
     create.Div(div, false, "error")
@@ -27,7 +29,9 @@ export function createLoginForm(main) {
 }
 
 function createRegisterForm(main) {
-    main.innerHTML=""
+    while (main.firstChild) {
+        main.removeChild(main.lastChild);
+    }
 
     let div = create.Div(main, false, "login-form")
     create.Div(div, false, "error")
@@ -90,10 +94,11 @@ function login(uname, pword, confirm) {
                 .then(r => r.json())
                 .then(r => {
                     localStorage.setItem("id", r.id)
+                    localStorage.setItem("uname", r.username)
                 })
 
             const main = document.getElementsByTagName("main")[0]
-            feed.createFeed(main)
+            feed.createFeed(main, 'user/feed')
         });
 
     }
@@ -138,10 +143,11 @@ function register(uname, pword, confirm, email, name) {
                     .then(r => r.json())
                     .then(r => {
                         localStorage.setItem("id", r.id)
+                        localStorage.setItem("uname", r.username)
                     })
 
                 const main = document.getElementsByTagName("main")[0]
-                feed.createFeed(main)
+                feed.createFeed(main, 'user/feed')
             });
         
 
@@ -151,34 +157,44 @@ function register(uname, pword, confirm, email, name) {
 export function logout(main) {
     localStorage.removeItem("token")
     const navbar = document.getElementsByClassName("nav")[0]
-    navbar.innerHTML=""
+    while (navbar.firstChild) {
+        navbar.removeChild(navbar.lastChild);
+    }
     createLoginForm(main)
 } 
 
 function error(error) {
     let div = document.getElementsByClassName("error")[0]
-    div.innerHTML=""
+    while (div.firstChild) {
+        div.removeChild(div.lastChild);
+    }
     div.style.display="block"
 
     let close = document.createElement("span")
     close.className="close"
-    close.innerHTML="&times;"
+    close.textContent="x"
     div.append(close)
 
+    let err = create.P(div, false, "error-text", "")
+    let strong = document.createElement("strong")
+    strong.textContent="Error: "
+    err.appendChild(strong)
     if (error == 0) {
-        create.P(div, false, "error-text", "<strong> Error</strong>: Passwords do not match")
+        err.appendChild(document.createTextNode("Passwords do not match"))
     } else if (error == 400) {
-        create.P(div, false, "error-text", "<strong> Error</strong>: Missing username or password")
+        err.appendChild(document.createTextNode("Missing username or password"))
     } else if (error == 403) {
-        create.P(div, false, "error-text", "<strong> Error</strong>: Invalid username or password")
+        err.appendChild(document.createTextNode("Invalid username or password"))
     } else if (error == 409) {
-        create.P(div, false, "error-text", "<strong> Error</strong>: Username already taken")
+        err.appendChild(document.createTextNode("Username already taken"))
     } else {
-        create.P(div, false, "error-text", "<strong> Unknown Error</strong>.")
+        err.appendChild(document.createTextNode("Unknown"))
     }
 
     close.addEventListener('click', function(){
         div.style.display = "none";
-        div.innerHTML=""
+        while (div.firstChild) {
+            div.removeChild(div.lastChild);
+        }
     })
 }

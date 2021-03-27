@@ -91,7 +91,7 @@ export function P (parent, id, cl, text) {
     let elem = document.createElement("p")
     if (id) {elem.id=id}
     if (cl) {elem.className=cl}
-    if (text) {elem.innerHTML=text} //Inner html vs text content to make using tags such as strong easier
+    if (text) {elem.textContent=text} 
     parent.append(elem)
     return elem
 }
@@ -152,19 +152,23 @@ export function Modal (main) {
 
     let close = document.createElement("span")
     close.className="close"
-    close.innerHTML="&times;"
+    close.textContent="x"
     content.appendChild(close)
 
     close.addEventListener('click', function(){
         modal.style.display = "none";
-        content.innerHTML=""
+        while (content.firstChild) {
+            content.removeChild(content.lastChild);
+        }
         content.appendChild(close)
 
     })
     window.onclick = function(e) {
         if (e.target==modal) {
             modal.style.display="none"
-            content.innerHTML=""
+            while (content.firstChild) {
+                content.removeChild(content.lastChild);
+            }
             content.appendChild(close)
         }
     }

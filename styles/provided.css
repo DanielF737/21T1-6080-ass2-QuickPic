@@ -38,12 +38,12 @@ footer {
 }
 
 .nav-item {
-    border: 1px solid rgba(0, 0, 0, 0.1);
     margin: auto;
     padding: 5px;
     display: inline;
     list-style-type: none;
-    cursor: pointer;
+    height: 30px;
+    width: auto;
 }
 
 h1.title {
@@ -110,9 +110,11 @@ div.post {
 
 .feed-item {
     padding: 0 2%;
-    line-height: 0;
 }
 
+p.feed-item {
+    margin: 1% 0;
+}
 
 img.feed-item {
     width:100%;
@@ -130,12 +132,69 @@ img.feed-item {
     text-decoration: underline;
 }
 
+
 div.like-wrapper {
     display:flex;
     align-content: flex-start;
     align-items: center;
     width: 10%;
     padding: 0 2%;
+}
+
+div.profile-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 5%;
+}
+
+div.author-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.inner-wrapper {
+    display:flex;
+    height: 40px;
+    min-width: 70px;
+}
+
+img.inner-wrapper {
+    width: 20px;
+    height: auto;
+    margin: 0 10%;
+}
+
+div.desc-wrapper {
+    width: 100%;
+}
+
+textarea.feed-item {
+    height: auto;
+    min-height: 30px;
+    width: 95%;
+    margin: 0 2.5%;
+    padding: 0;
+}
+
+div.flex-end {
+    justify-content: flex-end;
+    padding-right: 6%;
+}
+
+div.space-evenly {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0% 5%;
+}
+
+div.cell {
+    display: flex;
+    width: 20%;
+    min-width: 235px;
 }
 
 .add-like {
@@ -150,6 +209,11 @@ div.like-wrapper {
 
 .unliked {
     color:coral;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 /*Modal Styles*/
@@ -173,6 +237,7 @@ div.like-wrapper {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    min-width: 340px;
 }
 
 .close {
