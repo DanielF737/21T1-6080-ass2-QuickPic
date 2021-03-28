@@ -19,7 +19,7 @@ export function createFeed(main) {
   }
 
   //Remove existing event listeners
-    window.removeEventListener('scroll', infiniteScroll)
+  window.removeEventListener('scroll', infiniteScroll)
 
   //Build the signed in user navbar
   create.navbar()

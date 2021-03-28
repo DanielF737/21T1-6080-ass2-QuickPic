@@ -43,6 +43,8 @@ export function createProfile(main, id, username) {
   //Scroll to the top of the page
   document.body.scrollTop = 0 //Safari
   document.documentElement.scrollTop = 0 //Chrome Firefox IE
+  //Remove existing event listeners
+  window.removeEventListener('scroll', infiniteScroll)
 
   //Adjust the query strings based on the supplied paramters
   let query
