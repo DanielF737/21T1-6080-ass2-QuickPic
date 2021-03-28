@@ -1,5 +1,6 @@
 import * as create from './helpers.js'
 import * as post from './post.js'
+import * as feed from './feed.js'
 const api = `http://localhost:5000`
 
 /**
@@ -44,7 +45,7 @@ export function createProfile(main, id, username) {
   document.body.scrollTop = 0 //Safari
   document.documentElement.scrollTop = 0 //Chrome Firefox IE
   //Remove existing event listeners
-  window.removeEventListener('scroll', infiniteScroll)
+  window.removeEventListener('scroll', feed.infiniteScroll)
 
   //Adjust the query strings based on the supplied paramters
   let query

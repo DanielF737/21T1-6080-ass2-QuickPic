@@ -127,7 +127,7 @@ export function followUser() {
  * Allows infninite scrolling of the page rather than pagination by making additional API calls
  * as the user approaches the bottom of the page
  */
-function infiniteScroll() {
+export function infiniteScroll() {
   let feed = document.getElementById("homeFeed")
   let windowHeight = window.pageYOffset
   let total = windowHeight+ window.innerHeight
