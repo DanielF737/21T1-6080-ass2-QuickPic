@@ -293,19 +293,19 @@ function viewComments(post, commentWrapper) {
     .then(r => r.json())
     .then(r => {
       loader.remove()
-
+      let coms = r.comments.reverse() //order the comments chronilogically
       //Add each comment to the page
-      for (let i = 0; i < r.comments.length; i++) {
+      for (let i = 0; i < coms.length; i++) {
         let com = create.P(commentWrapper, false, "feed-item", "")
 
         //add the commenters name, and make clicking it redirect to commenters pofile
         let strong = document.createElement("strong")
         strong.textContent=`${r.comments[i].author}`
         strong.className="clickable"
-        strong.addEventListener("click", function(){profile.createProfile(document.getElementsByTagName("main")[0], false, r.comments[i].author)})
+        strong.addEventListener("click", function(){profile.createProfile(document.getElementsByTagName("main")[0], false, coms[i].author)})
         
         com.appendChild(strong)
-        com.appendChild(document.createTextNode(`: ${r.comments[i].comment}`))
+        com.appendChild(document.createTextNode(`: ${coms[i].comment}`))
       }
 
       //Add the hide comments button
