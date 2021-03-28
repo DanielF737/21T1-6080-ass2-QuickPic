@@ -133,3 +133,10 @@ textarea.add-comment {
   resize: none;
   overflow:auto;
 }
+
+#no-more {
+  margin:5% auto;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
