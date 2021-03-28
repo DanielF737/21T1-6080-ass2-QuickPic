@@ -122,7 +122,6 @@ export function createProfile(main, id, username) {
       strong.textContent=`${r.email}`
       create.P(row2, false, "feed-item", "Email: ").appendChild(strong)
 
-      //TODO - Make buttons pretty
       //Change button context depending on whether a user is viewing their own profile
       if (ownProf) {
         //Allow the user to edit their own profile
@@ -134,8 +133,7 @@ export function createProfile(main, id, username) {
         if (isFollowing(r.id)) {
           follow = create.Button(row2, "button", false, "follow", "Follow", "follow")
         } else {
-          follow = create.Button(row2, "button", false, "follow", "Unfollow", "follow")
-          follow.style.backgroundColor="#FFF"
+          follow = create.Button(row2, "button", false, "unfollow", "Unfollow", "follow")
         }
         follow.addEventListener("click", function(){followUser(r, follow, followers)})
       }
@@ -212,6 +210,7 @@ function showFollowing(user) {
  * @param {*} row row dom object where the information will be entered/displayed
  * @param {*} button Submit button
  */
+//TODO make form look good
 function editProfile(user, row, button) {
   //If the user is submitting their changes
   if (button.textContent=="Done") { 
@@ -272,10 +271,10 @@ function editProfile(user, row, button) {
     }
 
     //Replace elements with text inputs
-    let name = create.Input(row, "text", false, false, user.name, user.name)
-    let email = create.Input(row, "text", false, false, user.email, user.email)
-    let password = create.Input(row, "password", false, false, "", "password")
-    let btn = create.Button(row, "submit", false, false, "Done", false)
+    let name = create.Input(row, "text", false, "edit-profile", user.name, user.name)
+    let email = create.Input(row, "text", false, "edit-profile", user.email, user.email)
+    let password = create.Input(row, "password", false, "edit-profile", "", "password")
+    let btn = create.Button(row, "submit", false, "edit-profile", "Done", false)
 
     btn.addEventListener("click", function(e){e.preventDefault();editProfile(user, row, btn)})
   }
@@ -312,6 +311,7 @@ function followUser(user, button, followers) {
 
     //Update the button context
     button.textContent="Unfollow"
+    button.className="unfollow"
   } else {
     //Make the unfollow API call
     fetch(`${api}/user/unfollow?username=${user.username}`, options)
@@ -325,6 +325,7 @@ function followUser(user, button, followers) {
 
     //Update the button context
     button.textContent="Follow"
+    button.className="follow"
   }
 }
 

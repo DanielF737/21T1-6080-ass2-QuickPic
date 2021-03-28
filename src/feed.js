@@ -55,6 +55,10 @@ export function createFeed(main) {
         post.createPost(feed, r.posts[i])
       }
 
+      if(r.posts.length == 0) {
+        create.P(feed, "no-more", false, "No more posts, try following some more users")
+      }
+
       //start the infinite scroll
       window.addEventListener("scroll", infiniteScroll)
     });
@@ -74,7 +78,7 @@ export function followUser() {
   //Prepare the error message
   let error = create.Div(content, false, "error")
   create.P(content, false, false, "Enter the username of a user to follow:")
-  let input = create.Input(content, "text", false, false, false, "username")
+  let input = create.Input(content, "text", false, "search", false, "username")
   let submit = create.Button(content, "submit", false, false, "Follow", "follow")
 
   submit.addEventListener("click", function(e){

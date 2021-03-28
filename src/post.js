@@ -114,9 +114,12 @@ export function makePostForm() {
 
   //Build the form contents
   create.H2(content, false, false, "Make a post:")
-  create.Input(content, "file", false, false, false, false).setAttribute("accept", "image/png")
+  let upload = create.Input(content, "file", "upload", "upload-file", false, false).setAttribute("accept", "image/png")
+  let btn = create.Button(content, "button", false, false, "Upload your image", false)
+  btn.addEventListener("click", function(){document.getElementById("upload").click()}) //redirect the onclick event for style purposes
   create.P(content, false, false, "Enter a description for your image:")
   let desc = document.createElement("textarea")
+  desc.className="upload"
   desc.setAttribute("placeholder", "An interesting description...")
   desc.setAttribute("value", "An interesting description...")
   content.append(desc)

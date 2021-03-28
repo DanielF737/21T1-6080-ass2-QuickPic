@@ -140,3 +140,41 @@ textarea.add-comment {
   color: #555;
   text-align: center;
 }
+
+button {
+  border: none;
+  background-color: #0095F6;
+  color: white;
+  border: #0095F6 solid 2px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.unfollow {
+  background-color: white;
+  color: #0095F6;
+  border: #0095F6 solid 2px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.search {
+  margin-right: 2%;
+}
+
+.upload-file {
+  display: none;
+}
+
+textarea.upload {
+  width: 80%;
+}
+
+.edit-profile {
+  margin-top: 1%;
+  width: 40%;
+  max-width: 180px;
+}
+button.edit-profile {
+  margin: 1% 1%
+}

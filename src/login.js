@@ -2,7 +2,6 @@ import * as create from './helpers.js'
 import * as feed from './feed.js'
 const api = `http://localhost:5000`
 
-//TODO - Make this not butt ugly (suck it up and do some flexbox)
 /**
  * Build the login form
  * @param {*} main The 'main' DOM object (page body)
@@ -13,19 +12,20 @@ export function createLoginForm(main) {
     main.removeChild(main.lastChild);
   }
 
+  //Scroll to the top of the page
+  document.body.scrollTop = 0 //Safari
+  document.documentElement.scrollTop = 0 //Chrome Firefox IE
+
   //Build the login form
   let div = create.Div(main, false, "login-form")
   create.Div(div, false, "error")
   let loginForm = create.Form(div, false, "signup")
   
-  create.Label(loginForm, false, "login-form", "Username:")
-  let uname = create.Input(loginForm, "text", false, "login-form", false, "username")
+  create.H1(loginForm, false, "login-form", "Welcome, please log in!")
 
-  create.Label(loginForm, false, "login-form", "Password:")
-  let pword = create.Input(loginForm, "password", false, "login-form", false, "password")
-
-  create.Label(loginForm, false, "login-form", "Confirm Password:")
-  let confirm = create.Input(loginForm, "password", false, "login-form", false, "confirm")
+  let uname = create.Input(loginForm, "text", false, "login-form", false, "Username")
+  let pword = create.Input(loginForm, "password", false, "login-form", false, "Password")
+  let confirm = create.Input(loginForm, "password", false, "login-form", false, "Confirm Password")
 
   loginForm.append(document.createElement("br"))
 
@@ -47,28 +47,29 @@ function createRegisterForm(main) {
     main.removeChild(main.lastChild);
   }
 
+
+  //Scroll to the top of the page
+  document.body.scrollTop = 0 //Safari
+  document.documentElement.scrollTop = 0 //Chrome Firefox IE
+
   //Build the register form
   let div = create.Div(main, false, "login-form")
   create.Div(div, false, "error")
   let loginForm = create.Form(div, false, "signup")
-  create.Label(loginForm, false, "login-form", "Username:")
-  let uname = create.Input(loginForm, "text", false, "login-form", false, "username")
-  create.Label(loginForm, false, "login-form", "Password:")
-  let pword = create.Input(loginForm, "password", false, "login-form", false, "password")
-  create.Label(loginForm, false, "login-form", "Confirm Password:")
-  let confirm = create.Input(loginForm, "password", false, "login-form", false, "confirm")
   
-  
-  create.Label(loginForm, false, "login-form", "Email:")
-  let email = create.Input(loginForm, "text", false, "login-form", false, "email")
-  create.Label(loginForm, false, "login-form", "Username:")
-  let name = create.Input(loginForm, "text", false, "login-form", false, "full name")
+  create.H1(loginForm, false, "login-form", "Welcome, please sign up!")
+
+  let uname = create.Input(loginForm, "text", false, "login-form", false, "Username")
+  let pword = create.Input(loginForm, "password", false, "login-form", false, "Password")
+  let confirm = create.Input(loginForm, "password", false, "login-form", false, "Confirm Password")
+  let email = create.Input(loginForm, "text", false, "login-form", false, "Email")
+  let name = create.Input(loginForm, "text", false, "login-form", false, "Full name")
   
   loginForm.append(document.createElement("br"))
 
   let submit = create.Button(loginForm, "submit", false, "login-form", "Register", "register")
   submit.addEventListener("click", function(e){e.preventDefault();register(uname.value, pword.value, confirm.value, email.value, name.value)})
-  
+
   //Allow the user to swap to the login form
   let login = create.Button(loginForm, "button", false, false, "Have an account?", false)
   login.addEventListener("click", function(){createLoginForm(main)})
