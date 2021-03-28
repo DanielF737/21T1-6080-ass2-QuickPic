@@ -213,7 +213,6 @@ function showFollowing(user) {
  * @param {*} row row dom object where the information will be entered/displayed
  * @param {*} button Submit button
  */
-//TODO make form look good
 function editProfile(user, row, button) {
   //If the user is submitting their changes
   if (button.textContent=="Done") { 
